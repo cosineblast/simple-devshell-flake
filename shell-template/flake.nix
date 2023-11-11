@@ -16,7 +16,7 @@
 
         devShells.default =
           with pkgs; mkShell {
-            buildInputs = [
+            nativeBuildInputs = [
               pkgs.cowsay
             ];
           };
