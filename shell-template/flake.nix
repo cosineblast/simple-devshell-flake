@@ -7,7 +7,19 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system: {
-      devShells.default = import ./shell.nix { pkgs = nixpkgs.legacyPackages.${system}; };
-    });
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in
+      {
+        # instead of calling the mkShell function here,
+        # you can use shell.nix
+        # with import ./shell.nix { inherit pkgs;  }
+
+        devShells.default =
+          with pkgs; mkShell {
+            buildInputs = [
+              pkgs.cowsay
+            ];
+          };
+
+      });
 }
