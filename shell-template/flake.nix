@@ -10,10 +10,6 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
-        # instead of calling the mkShell function here,
-        # you can use shell.nix
-        # with import ./shell.nix { inherit pkgs;  }
-
         devShells.default =
           pkgs.mkShell {
             nativeBuildInputs = [
