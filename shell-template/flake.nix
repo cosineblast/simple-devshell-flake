@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake with devShell";
+  description = "Your flake name";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
@@ -16,6 +16,5 @@
               pkgs.cowsay
             ];
           };
-
       });
 }
